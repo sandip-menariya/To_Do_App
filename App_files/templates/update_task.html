@@ -1,0 +1,22 @@
+{% extends 'boiler_plate.html' %}
+
+{% block title %} Update Task {% endblock title %}
+
+{% block body %}
+    <section class="vh-100 d-flex justify-content-center align-items-center" style="background-color: hsl(0, 0%, 96%)">
+      <div class="card p-4 shadow-lg" style="width: 30rem">
+        <div class="card-title">
+          <h1 class="title">Edit Task</h1>
+        </div>
+        <div class="card-body">
+          <form class="form" method="post">
+            {% csrf_token %} {{ form }}
+            <div class="d-flex justify-content-center">
+            <button type="submit" class="btn mt-2 btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+        <a href="{% url 'task_list' %}" class="btn btn-secondary">Back To Task List</a>
+      </div>
+    </section>
+{% endblock body %}

@@ -1,0 +1,67 @@
+{% extends 'boiler_plate.html' %}
+
+{% block title %} Login {% endblock title %}
+{% block body %}
+  <!-- Jumbotron -->
+  {% if messages %}
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    {% for message in messages %}
+      {{ message }}
+    {% endfor %}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {% endif %} 
+  <!-- <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div> -->
+   <section class="vh-100 d-flex align-items-center" style="background-color: hsl(0, 0%, 96%)">
+  <div class="px-4 py-5 px-md-5 text-center text-lg-start w-100" >
+    <div class="container">
+      <div class="row gx-lg-5 align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <h1 class="my-5 display-3 fw-bold ls-tight">
+            Login to<br />
+            <span class="text-primary">your account</span>
+          </h1>
+        </div>
+
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <div class="card">
+            <div class="card-body py-5 px-md-5">
+              <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                <div data-mdb-input-init class="form-outline mb-4">
+                  <input type="text" id="username" name="username" class="form-control" />
+                  <label class="form-label" for="username">Username</label>
+                </div>
+
+                <!-- Password input -->
+                <div data-mdb-input-init class="form-outline mb-4">
+                  <input type="password" id="password" name="password" class="form-control" />
+                  <label class="form-label" for="password">Password</label>
+                </div>
+                <!-- Submit button -->
+                <div class="form-outline mb-4 d-flex justify-content-center">
+                  <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">
+                    Login
+                  </button>
+              
+                </div>
+
+
+                <!-- Register buttons -->
+                <div class="text-center">
+                  <p>Do not have account? <a href="{% url 'sign_up' %}">Sign Up</a></p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+{% endblock body %}
